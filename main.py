@@ -174,7 +174,7 @@ async def main():
     # ✅ Register handlers
     app.add_handler(ChatJoinRequestHandler(approve_join_request))
     app.add_handler(ChatMemberHandler(handle_member_status, ChatMemberHandler.CHAT_MEMBER))
-    app.add_handler(MessageHandler(filters.PRIVATE, handle_private_message))
+    app.add_handler(MessageHandler(filters.ChatType.PRIVATE, handle_private_message))
 
     logger.info("Starting bot and setting webhook...")
 
