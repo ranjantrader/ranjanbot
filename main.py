@@ -8,6 +8,8 @@ from telegram.ext import (
     ChatJoinRequestHandler,
     ChatMemberHandler,
     ContextTypes,
+    MessageHandler,
+    filters,
 )
 from aiohttp import web
 
@@ -26,6 +28,33 @@ WEBHOOK_PATH = "/telegram"  # You can customize if needed
 WEBHOOK_URL = f"{RENDER_EXTERNAL_URL}{WEBHOOK_PATH}" if RENDER_EXTERNAL_URL else ""
 
 app = None  # Global app reference for webhook processing
+
+
+# ✅ New function: Handle private messages to the bot
+async def handle_private_message(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    user = update.effective_user
+    logger.info(f"Received private message from {user.full_name}: {update.message.text}")
+
+    reply_text = """
+I am a bot and cannot reply to messages. Please contact the admin. Thank you
+
+@vallyadmin
+"""
+
+    keyboard = [
+        [InlineKeyboardButton("👨‍💼 Contact Admin", url="https://t.me/vallyadmin")]
+    ]
+    reply_markup = InlineKeyboardMarkup(keyboard)
+
+    try:
+        await update.message.reply_text(
+            text=reply_text,
+            parse_mode="Markdown",
+            reply_markup=reply_markup
+        )
+        logger.info(f"Sent auto-reply to {user.full_name}")
+    except Exception as e:
+        logger.warning(f"Couldn't send auto-reply to {user.full_name}: {e}")
 
 
 # ✅ Function to approve join requests and send welcome DM
@@ -145,6 +174,7 @@ async def main():
     # ✅ Register handlers
     app.add_handler(ChatJoinRequestHandler(approve_join_request))
     app.add_handler(ChatMemberHandler(handle_member_status, ChatMemberHandler.CHAT_MEMBER))
+    app.add_handler(MessageHandler(filters.PRIVATE, handle_private_message))
 
     logger.info("Starting bot and setting webhook...")
 
