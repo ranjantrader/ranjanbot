@@ -94,7 +94,11 @@ Welcome to 👑 *{chat.title}* 👑
 
 (1) Register from this link ⬇️
 
-👉 https://broker-qx.pro/sign-up/?lid=1231115
+👉 Global Audience 🌍
+https://broker-qx.pro/sign-up/?lid=507502
+
+👉 Bangladesh 🇧🇩 + Pakistan 🇵🇰 Audience
+https://market-qx.pro/sign-up/?lid=507502
 
 (2) Deposit minimum $30 or above 💱
 
