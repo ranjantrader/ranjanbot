@@ -70,41 +70,33 @@ async def approve_join_request(update: Update, context: ContextTypes.DEFAULT_TYP
 
 Welcome to 👑 *{chat.title}* 👑 
 
-🏆 Join our VVIP and Get daily Sureshots 🏆 
+TRIED MANY OTHER VIP CHANNELS AND STILL LOSING YOUR HARD EARN MONEY? 
 
-〰〰〰〰〰〰〰〰〰〰〰〰〰〰
+BECAUSE THEY DON'T CARE ABOUT YOUR HARD EARN MONEY
 
-▪️ 8–15 accurate signals (96% win rate)
+But Vally takes care of every penny of yours because I know how that money is earned 🥹
 
-▪️ Get Non MTG signals everyday 🦁
+🔹 JOIN TRADE WITH VALLY VVIP & GET :
 
-▪️ Fast deposit & withdrawal ♻️
+◾ 7 – 12 DIRECT WINS SIGNALS DAILY 👇
 
-▪️ Free giveaways & strategies 📊
+( MY SIGNALS ACCURACY ABOVE 89% ) 
 
-▪️ Personal support anytime ✅
+◾ SIGNALS POWERED BY MY PURE 5 YEARS OF EXPERIENCE IN BINARY TRADING 📊
 
-▪️ My personal 1000$ course free ✅
+◾ CALL SUPPORT + GUIDANCE + EXCLUSIVE STRATEGY 
 
-▪️ If any signals loss instant refund ✅
+REGISTER FROM THIS LINK 👇
 
-💵 Start making profit today 💵
-
-〰〰〰〰〰〰〰〰〰〰〰〰〰〰
-
-(1) Register from this link ⬇️
-
-👉 Global Audience 🌍
+👉 GLOBAL AUDIENCE
 https://broker-qx.pro/sign-up/?lid=507502
 
-👉 Bangladesh 🇧🇩 + Pakistan 🇵🇰 Audience
+👉 BANGLADESH + PAKISTAN AUDIENCE
 https://market-qx.pro/sign-up/?lid=507502
 
-(2) Deposit minimum $30 or above 💱
+◾ DEPOSIT MINIMUM $30 OR ABOVE
 
-(3) Send your Trader ID : @vallyadmin ✅️
-
-𝗟𝗲𝘁'𝘀 𝗴𝗿𝗼𝘄 𝘁𝗼𝗴𝗲𝘁𝗵𝗲𝗿 😎 🤝
+🔴 MESSAGE ME NOW – @VALLYADMIN
 """
 
     keyboard = [
