@@ -23,7 +23,7 @@ logger = logging.getLogger(__name__)
 # ✅ Load environment variables
 BOT_TOKEN = os.getenv("BOT_TOKEN")
 CHANNEL_ID = int(os.getenv("CHANNEL_ID"))
-RENDER_EXTERNAL_URL = os.getenv("RENDER_EXTERNAL_URL")  # Render injects this for web service
+RENDER_EXTERNAL_URL = "https://ranjanbot.onrender.com"  # Render injects this for web service
 WEBHOOK_PATH = "/telegram"  # You can customize if needed
 WEBHOOK_URL = f"{RENDER_EXTERNAL_URL}{WEBHOOK_PATH}" if RENDER_EXTERNAL_URL else ""
 
@@ -136,31 +136,45 @@ async def handle_member_status(update: Update, context: ContextTypes.DEFAULT_TYP
         except Exception as e:
             logger.warning(f"Couldn't send farewell DM to {user.full_name}: {e}")
 
-# ✅ HTTP health check endpoint
+# --- New webhook-related aiohttp code and main ---
+
+# Health check endpoint for Render or uptime
 async def handle_health(request):
     return web.Response(text="Bot is alive and running! 🚀")
 
-# ✅ Telegram webhook handler
-async def handle_telegram_webhook(request):
+# Webhook POST endpoint
+async def handle_webhook(request):
     try:
         data = await request.json()
         update = Update.de_json(data, app.bot)
         await app.process_update(update)
     except Exception as e:
-        logger.error(f"Error processing update: {e}")
+        logger.error(f"Failed to process update: {e}")
     return web.Response(text="OK")
 
-# ✅ Run the aiohttp web server
 async def run_web_server():
-    port = int(os.environ.get('PORT', 10000))
+    port = int(os.environ.get("PORT", 10000))
     web_app = web.Application()
     web_app.router.add_get('/', handle_health)
-    web_app.router.add_post(WEBHOOK_PATH, handle_telegram_webhook)
+    web_app.router.add_post(WEBHOOK_PATH, handle_webhook)
     runner = web.AppRunner(web_app)
     await runner.setup()
     site = web.TCPSite(runner, '0.0.0.0', port)
     await site.start()
     logger.info(f"HTTP server running on port {port}")
+
+# Keep-alive ping for Render or uptime services
+async def keep_alive_ping(url: str, interval: int = 30):
+    import aiohttp
+    while True:
+        try:
+            async with aiohttp.ClientSession() as session:
+                async with session.get(url) as resp:
+                    logger.info(f"[PING] Keep-alive ping to {url} — Status: {resp.status}")
+        except Exception as e:
+            logger.warning(f"[PING ERROR] {e}")
+        await asyncio.sleep(interval)
+
 
 # ✅ Main function
 async def main():
@@ -181,6 +195,10 @@ async def main():
     # ✅ Start web server to receive webhook updates
     await run_web_server()
 
+        # Start keep-alive pinger if URL provided
+    if RENDER_EXTERNAL_URL:
+        asyncio.create_task(keep_alive_ping(RENDER_EXTERNAL_URL))
+
     # ✅ Keep running
     stop_event = asyncio.Event()
     await stop_event.wait()
@@ -190,8 +208,7 @@ async def main():
     await app.shutdown()
 
 # ✅ Entry point
-if __name__ == '__main__':
+if __name__ == "__main__":
     if sys.platform.startswith('win') and sys.version_info[:2] >= (3, 8):
         asyncio.set_event_loop_policy(asyncio.WindowsSelectorEventLoopPolicy())
-
     asyncio.run(main())
