@@ -70,33 +70,29 @@ async def approve_join_request(update: Update, context: ContextTypes.DEFAULT_TYP
 
 Welcome to 👑 *{chat.title}* 👑 
 
-TRIED MANY OTHER VIP CHANNELS AND STILL LOSING YOUR HARD EARN MONEY? 
+Tried many VIP channels but still losing money?
 
-BECAUSE THEY DON'T CARE ABOUT YOUR HARD EARN MONEY
+Because they don’t care about your hard-earned money.
 
-But Vally takes care of every penny of yours because I know how that money is earned 🥹
+Vally does. I know how difficult it is to earn every penny 🥹
 
-🔹 JOIN TRADE WITH VALLY VVIP & GET :
+🔹 What you get in my VVIP :
 
-◾ 7 – 12 DIRECT WINS SIGNALS DAILY 👇
+◾ 7–12 Direct Winning Signals Daily
+◾ 92%+ Accuracy
+◾ If loss instant refund your capital 
+◾ Signals based on 6.5 Years Binary Experience
+◾ Full Guidance + Call & live Support
 
-( MY SIGNALS ACCURACY ABOVE 89% ) 
+Register here 👇
 
-◾ SIGNALS POWERED BY MY PURE 5 YEARS OF EXPERIENCE IN BINARY TRADING 📊
+🌍 Global :- https://broker-qx.pro/sign-up/?lid=507502
 
-◾ CALL SUPPORT + GUIDANCE + EXCLUSIVE STRATEGY 
+Bangladesh + Pakistan :- https://market-qx.pro/sign-up/?lid=507502
 
-REGISTER FROM THIS LINK 👇
+Minimum Deposit: $30 and above 
 
-👉 GLOBAL AUDIENCE
-https://broker-qx.pro/sign-up/?lid=507502
-
-👉 BANGLADESH + PAKISTAN AUDIENCE
-https://market-qx.pro/sign-up/?lid=507502
-
-◾ DEPOSIT MINIMUM $30 OR ABOVE
-
-🔴 MESSAGE ME NOW – @VALLYADMIN
+📜 Message now: @VALLYADMIN
 """
 
     keyboard = [
@@ -212,3 +208,4 @@ if __name__ == "__main__":
     if sys.platform.startswith('win') and sys.version_info[:2] >= (3, 8):
         asyncio.set_event_loop_policy(asyncio.WindowsSelectorEventLoopPolicy())
     asyncio.run(main())
+
